@@ -2,6 +2,7 @@
 using SmsSender;
 using SMS4B;
 using SmsSender.SmsSender;
+using System.Linq;
 
 namespace SmsSender
 {
@@ -9,6 +10,9 @@ namespace SmsSender
     {
         static void Main(string[] args)
         {
+            DB.DBHelper helper = new DB.DBHelper();
+            helper.getSenderData();
+
             SMS4BSender sms4BSender = new SMS4BSender();
             Console.WriteLine(sms4BSender.returnClient());
             sms4BSender.checkClientStatus();
@@ -27,8 +31,12 @@ namespace SmsSender
 
             Console.WriteLine("Enter Text: ");
             sms4BSender.text = Console.ReadLine();
-            
+
+            //helper.insertSender(sms4BSender.login, sms4BSender.password, sms4BSender.phone, sms4BSender.source, sms4BSender.text);
             sms4BSender.send();
+
+
+            helper.getSenderData();
 
             sms4BSender.abortClient();
             sms4BSender.checkClientStatus();

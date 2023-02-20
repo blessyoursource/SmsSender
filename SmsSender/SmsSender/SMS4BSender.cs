@@ -33,10 +33,11 @@ namespace SmsSender.SmsSender
         {
             client.Abort();
         }
-        public void send()
+        public string send()
         {
             var result = client.SendSMSAsync(login, password, source, phone, text);
             Console.WriteLine(result.Result.ToString());
+            return result.Result.ToString();
         }
     }
 

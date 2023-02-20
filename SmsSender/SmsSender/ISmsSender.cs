@@ -9,6 +9,6 @@ namespace SmsSender.SmsSender
     {
         long phone { get; set; }
         string text { get; set; }
-        void send();
+        string send();
     }
 }
