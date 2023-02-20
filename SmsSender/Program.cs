@@ -32,11 +32,13 @@ namespace SmsSender
             Console.WriteLine("Enter Text: ");
             sms4BSender.text = Console.ReadLine();
 
-            //helper.insertSender(sms4BSender.login, sms4BSender.password, sms4BSender.phone, sms4BSender.source, sms4BSender.text);
-            sms4BSender.send();
+            int id = helper.insertSender(sms4BSender.login, sms4BSender.password, sms4BSender.phone, sms4BSender.source, sms4BSender.text);
+            string result = sms4BSender.send();
 
+            helper.insertResponse(id, result);
 
             helper.getSenderData();
+            helper.getResponseData();
 
             sms4BSender.abortClient();
             sms4BSender.checkClientStatus();

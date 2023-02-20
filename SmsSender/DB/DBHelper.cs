@@ -27,11 +27,20 @@ namespace SmsSender.DB
         }
         public void getResponseData()
         {
-
+            using (SendContext db = new SendContext())
+            {
+                var responses = db.Responses.ToList();
+                Console.WriteLine("List of Responses:");
+                foreach (Response r in responses)
+                {
+                    Console.WriteLine($"{r.IdR}.{r.Guid}.{r.Response1}");
+                }
+            }
         }
 
-        public void insertSender(string login, string password, long phone, string source, string text)
+        public int insertSender(string login, string password, long phone, string source, string text)
         {
+            var id = 0;
             using (SendContext db = new SendContext())
             {
                 var senders = new Sender()
@@ -44,9 +53,24 @@ namespace SmsSender.DB
                 };
                 db.Add(senders);
                 db.SaveChanges();
-            }   
+                id = senders.IdS;
+            }
+            return id;
         }
 
+        public void insertResponse(int id, string result)
+        {
+            using (SendContext db = new SendContext())
+            {
+                var response = new Response()
+                {
+                    IdR = id,
+                    Response1 = result,
+                };
+                db.Add(response);
+                db.SaveChanges();
+            }
+        }
 
     }
 }
