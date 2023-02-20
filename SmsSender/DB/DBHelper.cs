@@ -10,7 +10,7 @@ namespace SmsSender.DB
     {
        public DBHelper()
         {
-
+            
         }
 
         public void getSenderData()
@@ -34,7 +34,7 @@ namespace SmsSender.DB
                 Console.WriteLine("List of Responses: ");
                 foreach (Response r in responses)
                 {
-                    Console.WriteLine($"{r.IdR}.{r.Guid}.{r.Response1}");
+                    Console.WriteLine($"{r.IdR}.{r.Response1}");
                 }
                 Console.WriteLine("\n");
             }
@@ -89,7 +89,7 @@ namespace SmsSender.DB
                     {
                         if (s.IdS == r.IdR)
                         {
-                            Console.WriteLine($"{s.IdS}.{s.Login}.{s.Password}.{s.Source}.{s.Phone}.{s.Text}.{r.Guid}.{r.Response1}");
+                            Console.WriteLine($"{s.IdS}.{s.Login}.{s.Password}.{s.Source}.{s.Phone}.{s.Text}.{r.Response1}");
                         }
                     }
                 }

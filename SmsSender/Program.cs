@@ -14,6 +14,8 @@ namespace SmsSender
             helper.getSenderData();
 
             SMS4BSender sms4BSender = new SMS4BSender();
+            SMS4BSender sms = new SMS4BSender(WSSMSoapClient.EndpointConfiguration.WSSMSoap);
+
             /*Console.WriteLine(sms4BSender.returnClient());
             sms4BSender.checkClientStatus();
 

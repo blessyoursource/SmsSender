@@ -20,6 +20,12 @@ namespace SmsSender.SmsSender
             var client = new WSSMSoapClient(WSSMSoapClient.EndpointConfiguration.WSSMSoap12);
             this.client = client;
         }
+        public SMS4BSender(WSSMSoapClient.EndpointConfiguration endConf)
+        {
+            var client = new WSSMSoapClient(endConf);
+            this.client = client;
+        }
+
         public WSSMSoapClient returnClient()
         {
             return client;
