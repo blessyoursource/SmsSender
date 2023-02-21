@@ -3,6 +3,7 @@ using SmsSender;
 using SMS4B;
 using SmsSender.SmsSender;
 using System.Linq;
+using SmsSender.Models;
 
 namespace SmsSender
 {
@@ -10,7 +11,7 @@ namespace SmsSender
     {
         static void Main(string[] args)
         {
-            DB.DBHelper helper = new DB.DBHelper();
+            DBHelper helper = new DBHelper();
             helper.getSenderData();
 
             SMS4BSender sms4BSender = new SMS4BSender();

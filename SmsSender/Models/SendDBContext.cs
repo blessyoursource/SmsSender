@@ -39,10 +39,10 @@ namespace SmsSender.Models
                 entity.ToTable("Response", "SendDB");
 
                 entity.Property(e => e.IdR)
-                    .HasColumnName("idR")
-                    .UseIdentityAlwaysColumn();
+                    .ValueGeneratedNever()
+                    .HasColumnName("idR");
 
-                entity.Property(e => e.Result).HasColumnType("char");
+                entity.Property(e => e.Result).HasColumnType("character varying");
             });
 
             modelBuilder.Entity<Sender>(entity =>
@@ -57,23 +57,23 @@ namespace SmsSender.Models
                     .UseIdentityAlwaysColumn();
 
                 entity.Property(e => e.Login)
-                    .HasColumnType("char")
+                    .HasColumnType("character varying")
                     .HasColumnName("login");
 
                 entity.Property(e => e.Password)
-                    .HasColumnType("char")
+                    .HasColumnType("character varying")
                     .HasColumnName("password");
 
                 entity.Property(e => e.Phone)
-                    .HasColumnType("char")
+                    .HasColumnType("character varying")
                     .HasColumnName("phone");
 
                 entity.Property(e => e.Source)
-                    .HasColumnType("char")
+                    .HasColumnType("character varying")
                     .HasColumnName("source");
 
                 entity.Property(e => e.Text)
-                    .HasColumnType("char")
+                    .HasColumnType("character varying")
                     .HasColumnName("text");
             });
 
