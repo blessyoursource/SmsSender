@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace SmsSender
+namespace SmsSender.Models
 {
     public partial class Response
     {
         public int IdR { get; set; }
-        public Guid? Guid { get; set; }
-        public string Response1 { get; set; }
+        public string Result { get; set; }
     }
 }

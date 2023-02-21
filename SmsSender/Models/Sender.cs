@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace SmsSender
+namespace SmsSender.Models
 {
     public partial class Sender
     {

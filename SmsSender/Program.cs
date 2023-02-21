@@ -16,7 +16,7 @@ namespace SmsSender
             SMS4BSender sms4BSender = new SMS4BSender();
             SMS4BSender sms = new SMS4BSender(WSSMSoapClient.EndpointConfiguration.WSSMSoap);
 
-            /*Console.WriteLine(sms4BSender.returnClient());
+            Console.WriteLine(sms4BSender.returnClient());
             sms4BSender.checkClientStatus();
 
             Console.WriteLine("Enter Login: ");
@@ -36,7 +36,7 @@ namespace SmsSender
 
             int id = helper.insertSender(sms4BSender.login, sms4BSender.password, sms4BSender.phone, sms4BSender.source, sms4BSender.text);
             string result = sms4BSender.send();
-            helper.insertResponse(id, result);*/
+            helper.insertResponse(id, result);
 
             helper.getSenderData();
             helper.getResponseData();

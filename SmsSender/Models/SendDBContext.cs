@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace SmsSender
+namespace SmsSender.Models
 {
-    public partial class SendContext : DbContext
+    public partial class SendDBContext : DbContext
     {
-        public SendContext()
+        public SendDBContext()
         {
         }
 
-        public SendContext(DbContextOptions<SendContext> options)
+        public SendDBContext(DbContextOptions<SendDBContext> options)
             : base(options)
         {
         }
@@ -25,7 +25,7 @@ namespace SmsSender
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Send;Trusted_Connection=True;");
+                optionsBuilder.UseNpgsql("Host=localhost;Database=SendDB;Username=postgres;Password=root");
             }
         }
 
@@ -34,54 +34,46 @@ namespace SmsSender
             modelBuilder.Entity<Response>(entity =>
             {
                 entity.HasKey(e => e.IdR)
-                    .HasName("PK__Response__DC501A1EE6C6D4AC");
+                    .HasName("Response_pkey");
 
-                entity.ToTable("Response");
+                entity.ToTable("Response", "SendDB");
 
                 entity.Property(e => e.IdR)
-                    .ValueGeneratedNever()
-                    .HasColumnName("idR");
+                    .HasColumnName("idR")
+                    .UseIdentityAlwaysColumn();
 
-                entity.Property(e => e.Guid).HasColumnName("guid");
-
-                entity.Property(e => e.Response1)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("response");
+                entity.Property(e => e.Result).HasColumnType("char");
             });
 
             modelBuilder.Entity<Sender>(entity =>
             {
                 entity.HasKey(e => e.IdS)
-                    .HasName("PK__tmp_ms_x__DC501A1D575D38BE");
+                    .HasName("Senders_pkey");
 
-                entity.ToTable("Sender");
+                entity.ToTable("Senders", "SendDB");
 
-                entity.Property(e => e.IdS).HasColumnName("idS");
+                entity.Property(e => e.IdS)
+                    .HasColumnName("idS")
+                    .UseIdentityAlwaysColumn();
 
                 entity.Property(e => e.Login)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .HasColumnType("char")
                     .HasColumnName("login");
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .HasColumnType("char")
                     .HasColumnName("password");
 
                 entity.Property(e => e.Phone)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .HasColumnType("char")
                     .HasColumnName("phone");
 
                 entity.Property(e => e.Source)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .HasColumnType("char")
                     .HasColumnName("source");
 
                 entity.Property(e => e.Text)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
+                    .HasColumnType("char")
                     .HasColumnName("text");
             });
 
