@@ -45,6 +45,23 @@ namespace SmsSender.SmsSender
             Console.WriteLine(result.Result.ToString());
             return result.Result.ToString();
         }
+
+        public string StatusSMS(string login, string password, string guid)
+        {
+            var result = client.StatusSMSAsync(login, password, guid);
+            Console.WriteLine(result.Result.ToString());
+            return result.Result.ToString();
+        }
+
+        public string getLogin()
+        {
+            return login;
+        }
+        public string getPassword()
+        {
+            return password;
+        }
+
     }
 
 }

@@ -35,16 +35,21 @@ namespace SmsSender
             Console.WriteLine("Enter Text: ");
             sms4BSender.text = Console.ReadLine();
 
-            int id = helper.insertSender(sms4BSender.login, sms4BSender.password, sms4BSender.phone, sms4BSender.source, sms4BSender.text);
-            string result = sms4BSender.send();
-            helper.insertResponse(id, result);
+            //int id = helper.insertSender(sms4BSender.login, sms4BSender.password, sms4BSender.phone, sms4BSender.source, sms4BSender.text);
+            //string result = sms4BSender.send();
+            //helper.insertResponse(id, result);
 
             helper.getSenderData();
             helper.getResponseData();
             helper.getSenderResponse();
 
+            Console.WriteLine("SMS GUID: ");
+            string GUID = Console.ReadLine();
+            string status = sms4BSender.StatusSMS(sms4BSender.getLogin(),sms4BSender.getPassword(), GUID);
+
             sms4BSender.abortClient();
             sms4BSender.checkClientStatus();
         }
+
     }
 }
